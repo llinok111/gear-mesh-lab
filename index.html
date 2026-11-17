@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>gear-mesh-lab — involute mesh contact-ratio &amp; interference workbench</title>
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 14px/1.45 ui-sans-serif, system-ui, -apple-system, sans-serif; background: #0d1117; color: #e6edf3; }
+  #app { display: grid; grid-template-columns: 340px 1fr; height: 100vh; }
+  #panel { overflow: auto; padding: 14px 16px; border-right: 1px solid #21262d; background: #0f141b; }
+  #scene { position: relative; }
+  canvas { display: block; width: 100%; height: 100%; }
+  h1 { font-size: 15px; margin: 0 0 4px; }
+  .sub { color: #8b949e; font-size: 12px; margin-bottom: 12px; }
+  label { display: block; margin: 10px 0 2px; font-size: 12px; color: #8b949e; }
+  input[type=range] { width: 100%; }
+  .val { color: #e6edf3; float: right; font-variant-numeric: tabular-nums; }
+  table { width: 100%; border-collapse: collapse; margin-top: 12px; font-variant-numeric: tabular-nums; }
+  td, th { text-align: left; padding: 4px 6px; border-bottom: 1px solid #21262d; font-size: 12px; }
+  th { color: #8b949e; font-weight: 500; }
+  .ok { color: #3fb950; } .bad { color: #f85149; } .warn { color: #d29922; }
+  button { margin-top: 12px; width: 100%; padding: 8px; border-radius: 6px; border: 1px solid #30363d; background: #21262d; color: #e6edf3; cursor: pointer; }
+  button:hover { background: #30363d; }
+  code { background: #161b22; padding: 1px 4px; border-radius: 4px; font-size: 12px; }
+  .note { color: #8b949e; font-size: 11px; margin-top: 10px; }
+</style>
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://unpkg.com/three@0.170.0/build/three.module.js"
+  }
+}
+</script>
+</head>
+<body>
+<div id="app">
+  <aside id="panel">
+    <h1>gear-mesh-lab</h1>
+    <div class="sub">Involute pair: analytic contact ratio vs an independent polygon rotation sweep.</div>
+
+    <label>Pinion teeth <span class="val" id="v-z1">12</span></label>
+    <input id="z1" type="range" min="12" max="24" step="1" value="12" />
+    <label>Wheel teeth <span class="val" id="v-z2">40</span></label>
+    <input id="z2" type="range" min="30" max="50" step="1" value="40" />
+    <label>Pinion profile shift x <span class="val" id="v-x">0.00</span></label>
+    <input id="x" type="range" min="-0.4" max="0.6" step="0.02" value="0" />
+    <label>Wheel addendum coeff <span class="val" id="v-ha">1.00</span></label>
+    <input id="ha" type="range" min="0.6" max="1" step="0.02" value="1" />
+    <label>Speed <span class="val" id="v-sp">1.0</span></label>
+    <input id="sp" type="range" min="0" max="4" step="0.1" value="1" />
+
+    <table>
+      <tr><th>quantity</th><th>value</th></tr>
+      <tr><td>analytic eps (formula)</td><td id="m-analytic">–</td></tr>
+      <tr><td>sweep eps (360 steps)</td><td id="m-sweep">press verify</td></tr>
+      <tr><td>|sweep - analytic|</td><td id="m-delta">–</td></tr>
+      <tr><td>interference steps / 360</td><td id="m-intf">–</td></tr>
+      <tr><td>coarse 5&deg; steps, interference</td><td id="m-coarse">–</td></tr>
+      <tr><td>pairs in contact now</td><td id="m-now">–</td></tr>
+      <tr><td>undercut</td><td id="m-uc">–</td></tr>
+      <tr><td>tip/root margin (wheel)</td><td id="m-margin">–</td></tr>
+    </table>
+    <button id="run">Run 360-step verification</button>
+    <div class="note">The sweep runs the same <code>src/core.mjs</code> as <code>bench/verify.mjs</code>; the page computes it in your browser, node computes it in CI. Numbers must match.</div>
+  </aside>
+  <main id="scene"><canvas id="c"></canvas></main>
+</div>
+<script type="module" src="./main.js"></script>
+</body>
+</html>

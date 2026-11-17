@@ -1,0 +1,48 @@
+{
+  "generated_by": "bench/bench.mjs",
+  "config": {
+    "pinion": {
+      "teeth": 12,
+      "module": 2
+    },
+    "wheel": {
+      "teeth": 40,
+      "module": 2
+    },
+    "sweepSteps": 360,
+    "bruteSteps": 24,
+    "samples": 7
+  },
+  "warmup": 1,
+  "coldStartMs": 2585.473,
+  "fineSweepMs": {
+    "min": 2464.881,
+    "median": 2472.395,
+    "p95": 2537.484,
+    "max": 2537.484,
+    "mean": 2484.07,
+    "stddev": 23.844,
+    "relStddev": 0.01,
+    "perStep": 6.8678
+  },
+  "bruteForceMs": {
+    "min": 1647.474,
+    "median": 1851.326,
+    "p95": 1901.7,
+    "max": 1901.7,
+    "mean": 1800.166,
+    "stddev": 109.911,
+    "relStddev": 0.061,
+    "perStep": 77.1386
+  },
+  "speedupBruteVsPruned": 11.23,
+  "coarseSweepMs": 41.671,
+  "accuracy": {
+    "analyticContactRatio": 1.56694,
+    "sweepContactRatio": 1.54444,
+    "absError": 0.02249,
+    "interferenceStepsFine": 56,
+    "interferenceStepsCoarse5deg": 1,
+    "coarseMissRate": 0.9821
+  }
+}

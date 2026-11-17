@@ -1,0 +1,232 @@
+{
+  "schema": "gear-mesh-lab/1",
+  "module": 2,
+  "sweepSteps": 360,
+  "configs": {
+    "base12_40": {
+      "A": {
+        "teeth": 12,
+        "module": 2,
+        "profileShift": 0,
+        "addendumCoeff": 1,
+        "rp": 12,
+        "rb": 11.2763,
+        "ra": 14,
+        "rf": 9.5,
+        "undercut": true,
+        "undercutLimit": 17.0973,
+        "outlinePoints": 1188,
+        "fingerprint": "c6077bed"
+      },
+      "B": {
+        "teeth": 40,
+        "module": 2,
+        "profileShift": 0,
+        "addendumCoeff": 1,
+        "rp": 40,
+        "rb": 37.5877,
+        "ra": 42,
+        "rf": 37.5,
+        "undercut": false,
+        "undercutLimit": 17.0973,
+        "outlinePoints": 3960,
+        "fingerprint": "2909a1a5"
+      },
+      "analyticContactRatio": 1.56694,
+      "interferenceMargin": {
+        "limit": 17.785,
+        "tipsBeyond": [
+          -9.48777,
+          0.954335
+        ]
+      },
+      "sweep": {
+        "contactRatio": 1.54444,
+        "minPairs": 1,
+        "maxPairs": 2,
+        "interferenceSteps": 56,
+        "maxPenetration": 0.00825751,
+        "noContactSteps": 0,
+        "steps": 360,
+        "stepAngleDeg": 0.0833333
+      },
+      "coarseSweep": {
+        "steps": 6,
+        "stepAngleDeg": 5,
+        "contactRatio": 1.5,
+        "interferenceSteps": 1
+      },
+      "issues": [
+        "UNDERCUT:A",
+        "TIP_ROOT_INTERFERENCE:B"
+      ]
+    },
+    "repair_haB07": {
+      "A": {
+        "teeth": 12,
+        "module": 2,
+        "profileShift": 0,
+        "addendumCoeff": 1,
+        "rp": 12,
+        "rb": 11.2763,
+        "ra": 14,
+        "rf": 9.5,
+        "undercut": true,
+        "undercutLimit": 17.0973,
+        "outlinePoints": 1188,
+        "fingerprint": "c6077bed"
+      },
+      "B": {
+        "teeth": 40,
+        "module": 2,
+        "profileShift": 0,
+        "addendumCoeff": 0.7,
+        "rp": 40,
+        "rb": 37.5877,
+        "ra": 41.4,
+        "rf": 37.5,
+        "undercut": false,
+        "undercutLimit": 11.9681,
+        "outlinePoints": 3960,
+        "fingerprint": "693a2029"
+      },
+      "analyticContactRatio": 1.33212,
+      "interferenceMargin": {
+        "limit": 17.785,
+        "tipsBeyond": [
+          -9.48777,
+          -0.43211
+        ]
+      },
+      "sweep": {
+        "contactRatio": 1.33889,
+        "minPairs": 1,
+        "maxPairs": 2,
+        "interferenceSteps": 0,
+        "maxPenetration": 0,
+        "noContactSteps": 0,
+        "steps": 360,
+        "stepAngleDeg": 0.0833333
+      },
+      "coarseSweep": {
+        "steps": 6,
+        "stepAngleDeg": 5,
+        "contactRatio": 1.33333,
+        "interferenceSteps": 0
+      },
+      "issues": [
+        "UNDERCUT:A"
+      ]
+    },
+    "repair_18_40": {
+      "A": {
+        "teeth": 18,
+        "module": 2,
+        "profileShift": 0,
+        "addendumCoeff": 1,
+        "rp": 18,
+        "rb": 16.9145,
+        "ra": 20,
+        "rf": 15.5,
+        "undercut": false,
+        "undercutLimit": 17.0973,
+        "outlinePoints": 1782,
+        "fingerprint": "0981187d"
+      },
+      "B": {
+        "teeth": 40,
+        "module": 2,
+        "profileShift": 0,
+        "addendumCoeff": 1,
+        "rp": 40,
+        "rb": 37.5877,
+        "ra": 42,
+        "rf": 37.5,
+        "undercut": false,
+        "undercutLimit": 17.0973,
+        "outlinePoints": 3960,
+        "fingerprint": "2909a1a5"
+      },
+      "analyticContactRatio": 1.62165,
+      "interferenceMargin": {
+        "limit": 19.8372,
+        "tipsBeyond": [
+          -9.16474,
+          -1.09779
+        ]
+      },
+      "sweep": {
+        "contactRatio": 1.62222,
+        "minPairs": 1,
+        "maxPairs": 2,
+        "interferenceSteps": 0,
+        "maxPenetration": 0,
+        "noContactSteps": 0,
+        "steps": 360,
+        "stepAngleDeg": 0.0555556
+      },
+      "coarseSweep": {
+        "steps": 4,
+        "stepAngleDeg": 5,
+        "contactRatio": 1.75,
+        "interferenceSteps": 0
+      },
+      "issues": []
+    },
+    "jam_xA05": {
+      "A": {
+        "teeth": 12,
+        "module": 2,
+        "profileShift": 0.5,
+        "addendumCoeff": 1,
+        "rp": 12,
+        "rb": 11.2763,
+        "ra": 15,
+        "rf": 10.5,
+        "undercut": false,
+        "undercutLimit": 8.54863,
+        "outlinePoints": 1188,
+        "fingerprint": "88d22575"
+      },
+      "B": {
+        "teeth": 40,
+        "module": 2,
+        "profileShift": 0,
+        "addendumCoeff": 0.7,
+        "rp": 40,
+        "rb": 37.5877,
+        "ra": 41.4,
+        "rf": 37.5,
+        "undercut": false,
+        "undercutLimit": 11.9681,
+        "outlinePoints": 3960,
+        "fingerprint": "693a2029"
+      },
+      "analyticContactRatio": 1.60215,
+      "interferenceMargin": {
+        "limit": 17.785,
+        "tipsBeyond": [
+          -7.89339,
+          -0.43211
+        ]
+      },
+      "sweep": {
+        "contactRatio": 0.583333,
+        "minPairs": 0,
+        "maxPairs": 3,
+        "interferenceSteps": 360,
+        "maxPenetration": 0.499953,
+        "noContactSteps": 177,
+        "steps": 360,
+        "stepAngleDeg": 0.0833333
+      },
+      "coarseSweep": {
+        "steps": 6,
+        "stepAngleDeg": 5,
+        "contactRatio": 0.5,
+        "interferenceSteps": 6
+      },
+      "issues": []
+    }
+  }
+}
