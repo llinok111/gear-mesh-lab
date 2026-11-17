@@ -47,6 +47,8 @@ The page imports the *same* `src/core.mjs`; the "Run 360-step verification" butt
 | candidate pruning speedup | 11.23× per step |
 | 5° coarse sweep | 41.7 ms |
 
+Timing rows are wall-clock from the committed `bench/result.json` run (warmup 1 + 7 samples; `relSD` is in the file). Wall-clock re-runs on the same machine vary: an independent re-run measured median 2486 ms (6.91 ms/step, relSD 0.7%), brute 1621 ms (67.52 ms/step, relSD 0.2%) and speedup **9.78×**. The correctness numbers (`accuracy` block) reproduced exactly.
+
 Clean-pair oracle agreement (from `node bench/verify.mjs`):
 
 | design | analytic ε | swept ε | \|Δ\| | interference poses / 360 |
@@ -60,11 +62,11 @@ Reproducibility: `data/gears.json` is byte-stable across runs, and `outlineFinge
 ## Known limitations
 
 * **Absolute tolerance:** contact uses `contactTol = 2e-3 · module` and the undercut/interference margins are absolute lengths in the same unit as `module`. Valid for the unit-scale (mm-like) range used here; because both the tolerance and the geometry scale with `module`, results are **scale-invariant** — verified at module 2×10⁻³, 2 and 2×10³ (identical ε=1.544444 and identical 56 interference poses, penetration scaling proportionally).
-* **Profile shift at standard centre distance:** the tool keeps the standard centre distance `a = rp₁+rp₂`. A positive pinion shift then *thickens* the tooth and the pair jams — this is a real, reproduced finding (`jam_xA05` in `data/gears.json`: ε_sweep 0.4389, 360/360 poses interfering, penetration 0.4999). Proper shifted meshes need a recalculated operating centre distance, which this version does not implement.
+* **Profile shift at standard centre distance:** the tool keeps the standard centre distance `a = rp₁+rp₂`. A positive pinion shift then *thickens* the tooth and the pair jams — this is a real, reproduced finding (`jam_xA05` in `data/gears.json`: ε_sweep 0.5833 against analytic 1.6022, 360/360 poses interfering, max penetration 0.499953, 177/360 poses with no contact at all). Proper shifted meshes need a recalculated operating centre distance, which this version does not implement.
 * **No backlash model:** the sweep measures the geometric contact of zero-backlash profiles, so the driving-flank filter (index run `[leftEnd, rightEnd)`) is required; the whole-tooth min-distance metric over-counts trailing-flank proximity.
 * **2D transverse plane:** spur gears only; no helix, no axial overlap, no load/strength analysis, no manufacturing tolerance.
 * **Sampling resolution** is the subject of the resolution table, not a hidden knob: 6/24/120/360/720 poses per pitch find 1/4/19/56/112 interference poses respectively.
 
 ## 本轮创新
 
-**B 档.** The first workbench in this line that treats the *analytic* contact ratio and an *independent polygon rotation sweep* as mutually-checking oracles and surfaces their disagreement, and that quantifies the sampling-resolution → interference-miss-rate curve (5° sampling misses 99.1% of the interfering window; 0.5° finds all 56). Prior art in this cluster is either an involute profile *generator* or a desktop Python library (py_gearworks computes a contact ratio but does not cross-check it); a `gh search repos` for `gear contact ratio` / `undercut gear` returns 0 repositories, and the browser tools found (Otvinta, Evolvent Design) emit geometry or strength numbers with no interference verdict at all. The browser and node share one core module, so the number on screen is the number asserted in CI.
+**B 档.** The first workbench in this line that treats the *analytic* contact ratio and an *independent polygon rotation sweep* as mutually-checking oracles and surfaces their disagreement, and that quantifies the sampling-resolution → interference-miss-rate curve (5° sampling misses 99.1% of the interfering window; only 360 poses per pitch — 0.0833°, far finer than any interactive sampling — find all 56, while 0.5°/60 poses find just 9). Prior art in this cluster is either an involute profile *generator* or a desktop Python library (py_gearworks computes a contact ratio but does not cross-check it); a `gh search repos` for `gear contact ratio` / `undercut gear` returns 0 repositories, and the browser tools found (Otvinta, Evolvent Design) emit geometry or strength numbers with no interference verdict at all. The browser and node share one core module, so the number on screen is the number asserted in CI.
